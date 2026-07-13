@@ -52,6 +52,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Context\MyCmsContext.cs" />
+    <Compile Include="Migrations\202607130702137_Initial_Database.cs" />
+    <Compile Include="Migrations\202607130702137_Initial_Database.designer.cs">
+      <DependentUpon>202607130702137_Initial_Database.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Page.cs" />
     <Compile Include="Models\PageComment.cs" />
     <Compile Include="Models\PageGroup.cs" />
@@ -60,6 +66,11 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202607130702137_Initial_Database.resx">
+      <DependentUpon>202607130702137_Initial_Database.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
