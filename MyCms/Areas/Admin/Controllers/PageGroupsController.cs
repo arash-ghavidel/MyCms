@@ -106,7 +106,7 @@ namespace MyCms.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            return View(pageGroup);
+            return PartialView(pageGroup);
         }
 
         // POST: Admin/PageGroups/Delete/5

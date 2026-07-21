@@ -26,7 +26,8 @@
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.GroupID }) |
                 @Html.ActionLink("Details", "Details", new { id = item.GroupID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.GroupID })
+                <a class="btn btn-sm btn-danger" onclick="deleteGroup(@item.GroupID)">حذف</a>
+                @*@Html.ActionLink("Delete", "Delete", new { id = item.GroupID })*@
             </td>
         </tr>
     }
@@ -58,5 +59,19 @@
                 $("#myModalBody").html(result);
             });
         });
+        function deleteGroup(id) {
+            $.get("/Admin/PageGroups/Delete/" + id, function (result) {
+                $("#myModal").modal();
+                $("#myModalLabel").html("حذف گروه");
+                $("#myModalBody").html(result);
+            });
+        }
+        //$("#btnDelete").click(function () {
+        //    $.get("/Admin/PageGroups/Delete", function (result) {
+        //        $("#myModal").modal();
+        //        $("#myModalLabel").html("حذف گروه");
+        //        $("#myModalBody").html(result);
+        //    });
+        //});
     </script>
 }
