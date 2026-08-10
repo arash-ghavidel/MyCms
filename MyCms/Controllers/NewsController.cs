@@ -31,5 +31,9 @@ namespace MyCms.Controllers
         {
             return PartialView(pageRepository.TopNews());
         }
+        public ActionResult LastNews()
+        {
+            return PartialView(pageRepository.LastNews());
+        }
     }
 }

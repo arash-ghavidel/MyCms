@@ -16,5 +16,7 @@ namespace DataLayer
         bool DeletePage(int pageId);
         void Save();
         IEnumerable<Page> TopNews(int take = 4);
+        IEnumerable<Page> PagesInSlider();
+        IEnumerable<Page> LastNews(int take = 4);
     }
 }

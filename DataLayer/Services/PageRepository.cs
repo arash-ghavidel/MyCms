@@ -84,5 +84,15 @@ namespace DataLayer
         {
             return db.Pages.OrderByDescending(p => p.Visit).Take(take);
         }
+
+        public IEnumerable<Page> PagesInSlider()
+        {
+            return db.Pages.Where(p => p.ShowInSlider == true);
+        }
+
+        public IEnumerable<Page> LastNews(int take = 4)
+        {
+            return db.Pages.OrderByDescending(p => p.CreateDate).Take(take);
+        }
     }
 }
