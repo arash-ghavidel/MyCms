@@ -46,5 +46,18 @@ namespace MyCms.Controllers
             ViewBag.name = title;
             return View(pageRepository.ShowPageByGroupId(id));
         }
+        [Route("News/{id}")]
+        public ActionResult ShowNews(int id)
+        {
+            var news = pageRepository.GetPageById(id);
+            if(news == null)
+            {
+                return HttpNotFound();
+            }
+            news.Visit += 1;
+            pageRepository.UpdatePage(news);
+            pageRepository.Save();
+            return View(news);
+        }
     }
 }
