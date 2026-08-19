@@ -11,12 +11,14 @@ namespace MyCms.Controllers
     {
         // GET: News
         MyCmsContext db = new MyCmsContext();
-        PageGroupRepository pageGroupRepository;
-        PageRepository pageRepository;
+        private IPageGroupRepository pageGroupRepository;
+        private IPageRepository pageRepository;
+        private IPageCommentRepository pageCommentRepository;
         public NewsController()
         {
             pageGroupRepository = new PageGroupRepository(db);
             pageRepository = new PageRepository(db);
+            pageCommentRepository = new PageCommentRepository(db);
         }
         public ActionResult ShowGroups()
         {
@@ -58,6 +60,18 @@ namespace MyCms.Controllers
             pageRepository.UpdatePage(news);
             pageRepository.Save();
             return View(news);
+        }
+        public ActionResult AddComment(int id, string name, string email, string comment)
+        {
+            PageComment addComment = new PageComment() {
+                PageID = id,
+                Name = name,
+                Email = email,
+                Comment = comment,
+                CreateDate = DateTime.Now
+            };
+            pageCommentRepository.AddComment(addComment);
+            return null;
         }
     }
 }
