@@ -71,7 +71,11 @@ namespace MyCms.Controllers
                 CreateDate = DateTime.Now
             };
             pageCommentRepository.AddComment(addComment);
-            return null;
+            return PartialView("ShowComments",pageCommentRepository.GetCommentByNewsId(id));
+        }
+        public ActionResult ShowComments(int id)
+        {
+            return PartialView(pageCommentRepository.GetCommentByNewsId(id));
         }
     }
 }
