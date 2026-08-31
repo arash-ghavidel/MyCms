@@ -27,7 +27,7 @@
 <div class="keywords border-radius">
     @foreach (var item in Model.Tags.Split(','))
     {
-        <a href=""> @item </a>
+        <a href="/Search?q=@item"> @item </a>
     }
 </div>
 <section class="comment-layer">
