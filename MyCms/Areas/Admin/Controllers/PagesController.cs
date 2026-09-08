@@ -11,6 +11,7 @@ using System.IO;
 
 namespace MyCms.Areas.Admin.Controllers
 {
+    [Authorize]
     public class PagesController : Controller
     {
         private IPageRepository pageRepository;

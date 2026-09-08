@@ -66,8 +66,15 @@
             <ul>
                 <li><a href="/"> صفحه اصلی </a></li>
                 <li><a href="/Archive"> آرشیو خبرها </a></li>
-                <li><a href=""> ثبت نام </a></li>
-                <li><a href=""> ورود به سایت </a></li>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li><a href=""> @User.Identity.Name خوش آمدید </a></li>
+                    <li><a href="/Account/SignOut"> خروج </a></li>
+                }
+                else
+                {
+                    <li><a href="/Account/Login"> ورود به سایت </a></li>
+                }
                 <li>
                     @Html.Action("ShowGroupsInMenu","News")
                 </li>
@@ -80,7 +87,20 @@
         <div class="row">
 
             <aside class="col-md-4 col-sm-12 col-xs-12 pull-right">
-
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <section class="category-section border-radius">
+                        <header><i class="fa fa-th-list"></i> <h3> پنل مدیریت سایت </h3></header>
+                        <ul>
+                            <li>
+                                <a href="/Admin/PageGroups">مدیریت گروه ها</a>
+                            </li>
+                            <li>
+                                <a href="/Admin/Pages">مدیریت صفحات</a>
+                            </li>
+                        </ul>
+                    </section>
+                }
                 @Html.Action("ShowGroups","News")
                 <!-- most views news -->
                 @Html.Action("TopNews","News")
@@ -135,5 +155,6 @@
     <script src="/Content/js/bootstrap.min.js"></script>
     <script src="/Content/js/owl.carousel.js"></script>
     <script src="/Content/js/script.js"></script>
+    @RenderSection("Scripts",false);
 </body>
 </html>
